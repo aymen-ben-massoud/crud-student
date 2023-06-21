@@ -1,2 +1,2 @@
-# crud-student
-crud-student
+# crud
+crud

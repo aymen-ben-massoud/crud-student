@@ -1,0 +1,109 @@
+<div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-6 mt-3">
+        <div class="text-center">
+  <h1  class="text-light p-3 bg-primary" >CRUD STUDENT </h1></div>
+  <form [formGroup]="myForm"  (ngSubmit)=" addpsots(myForm.value) ">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Name </label>
+        <input   [(ngModel)]="updatestudent.name" required formControlName="name" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name">
+        <div   *ngIf="myForm.get('name').touched && myForm.get('name').invalid" class="alert alert-danger" role="alert">
+          your name is required
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email</label>
+        <input   [(ngModel)]="updatestudent.email" required formControlName="email"  type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    
+        <div *ngIf="myForm.get('email').invalid && myForm.get('email').touched" class="alert alert-danger" role="alert">
+          your email is required
+        </div>
+      </div>
+   
+
+      <div class="container"><div class="row"><div class=" text-center">
+
+        <button *ngIf="!editform" class="btn btn-primary"[disabled]="!myForm.valid">Add <i class="fa-regular fa-floppy-disk"></i></button>
+
+        <button    *ngIf="editform" [disabled]="!myForm.valid" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="updatestudentfunction()" class="btn btn-success" >SAVE <i class="fa-regular fa-floppy-disk"></i></button>
+      </div> </div></div> </form>
+    </div></div>
+  </div>
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-9 mt-3">
+        <table class="table ">
+          <thead class="text-center ">
+            <tr >
+             
+              <th scope="col">ID</th>
+              <th scope="col">Email</th>
+              <th scope="col">Name</th>
+              <th scope="col">Settings</th>
+            </tr>
+          </thead>
+          <tbody  class="text-center">
+            <tr [@itemanim] *ngFor="let item of student">
+             
+              <td>{{item.id}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.name}}</td>
+              <td> <button (click)="deleteposts(item.id)" class="btn btn-danger "><i class="fa-solid fa-trash "></i></button>
+                <button (click)="editbuttonform()" (click)="editstudent(item)" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></button>  </td>
+          
+          
+           
+          </tbody>
+        </table>
+     
+  
+  </div>
+
+
+ <!-- start update  -->
+
+ <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="myForm"  >
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name </label>
+            <input [(ngModel)]="updatestudent.name"  required formControlName="name" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name">
+            <div *ngIf="myForm.get('name').touched && myForm.get('name').invalid" class="alert alert-danger" role="alert">
+              your name is required
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email</label>
+            <input  [(ngModel)]="updatestudent.email" required formControlName="email"  type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        
+            <div *ngIf="myForm.get('email').invalid && myForm.get('email').touched" class="alert alert-danger" role="alert">
+              your email is required
+            </div>
+          </div>
+       
+    
+          <div class="container"><div class="row"><div class=" text-center">
+    
+            <button [disabled]="!myForm.valid" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="updatestudentfunction()" class="btn btn-outline-primary" >SAVE <i class="fa-regular fa-floppy-disk"></i></button>
+    
+          
+          </div> </div></div> </form>
+      </div>
+      
+    </div>
+  </div>
+</div> -->
+ <!-- end update -->
